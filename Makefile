@@ -16,6 +16,7 @@ BINDIR = $(PREFIX)/bin
 SHAREDIR = $(PREFIX)/share
 MANDIR = $(SHAREDIR)/man/man1/
 LIBDIR = $(PREFIX)/lib
+SYSTEMDDIR = /usr/lib/systemd/user
 
 # default compiler and linker flags
 CFLAGS += -O3 -Wall -Wextra -c -std=gnu99 -fPIC -D_GNU_SOURCE -pthread
@@ -166,6 +167,7 @@ install: install_man
 	install -m 644 $(PROG).so $(DESTDIR)$(LIBDIR)/mod-host/
 	install -m 644 fake-input.so $(DESTDIR)$(LIBDIR)/mod-host/
 	install -m 644 mod-monitor.so $(DESTDIR)$(LIBDIR)/mod-host/
+	install -m 644 utils/mod-host.service $(DESTDIR)$(SYSTEMDDIR)
 
 # clean rule
 clean:
